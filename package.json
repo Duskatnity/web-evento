@@ -1,0 +1,24 @@
+{
+  "name": "web-evento",
+  "version": "1.0.0",
+  "description": "Web para eventos de actividades varias",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Duskatnity/web-evento.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Duskatnity/web-evento/issues"
+  },
+  "homepage": "https://github.com/Duskatnity/web-evento#readme",
+  "devDependencies": {
+    "standard": "^17.1.0",
+    "vite": "^5.1.1"
+  }
+}
