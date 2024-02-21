@@ -25,7 +25,16 @@ class Menu extends HTMLElement {
           text-align: center;
           padding: 1rem;
           max-width: 5rem;
+          font-family: 'Poppins', sans-serif;
+          background-color: hsl(0, 0%, 0%, 0.7);
         }
+
+        .menu-item:hover {
+          cursor: pointer;
+          background-color: hsl(204, 59%, 61%);
+          transition: 0.2s;
+        }
+
       </style>
       <div class="menu">
         <div class="menu-item">Quienes somos</div>
