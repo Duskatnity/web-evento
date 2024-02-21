@@ -12,18 +12,24 @@ class ProductsGallery extends HTMLElement {
     this.shadow.innerHTML =
       /* html */`
     <style>
+
+      img{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+
       .product-container {
         display: grid;
+        gap: 1rem;
         grid-template-columns: repeat(5, 1fr);
-        justify-content: space-around;
+        grid-auto-rows: 300px;
         padding: 1.25rem;
         font-family: 'Poppins', sans-serif;
       }
 
       .flip-card {
         background-color: transparent;
-        width: 300px;
-        height: 300px;
         perspective: 1000px;
       }
 
@@ -55,8 +61,7 @@ class ProductsGallery extends HTMLElement {
       }
 
       .flip-card-back {
-        background-color: #2980b9;
-        color: white;
+        background-color: hsla(198, 55%, 39%, 0.1);
         transform: rotateY(180deg);
       }
     </style>
@@ -64,7 +69,7 @@ class ProductsGallery extends HTMLElement {
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img src="son-sampol.webp" alt="son sampol" style="width:300px;height:300px;">
+            <img src="son-sampol.webp" alt="son sampol">
           </div>
           <div class="flip-card-back">
             <h1>John Doe</h1> 
@@ -77,7 +82,7 @@ class ProductsGallery extends HTMLElement {
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img src="masks.webp" alt="mascaras" style="width:300px;height:300px;">
+            <img src="masks.webp" alt="mascaras">
           </div>
           <div class="flip-card-back">
             <h1>John Doe</h1> 
@@ -90,7 +95,7 @@ class ProductsGallery extends HTMLElement {
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img src="music.webp" alt="Avatar" style="width:300px;height:300px;">
+            <img src="music.webp" alt="Avatar">
           </div>
           <div class="flip-card-back">
             <h1>John Doe</h1> 
@@ -103,7 +108,7 @@ class ProductsGallery extends HTMLElement {
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img src="open-books.webp" alt="Avatar" style="width:300px;height:300px;">
+            <img src="open-books.webp" alt="Avatar">
           </div>
           <div class="flip-card-back">
             <h1>John Doe</h1> 
@@ -116,7 +121,72 @@ class ProductsGallery extends HTMLElement {
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img src="people-dancing.webp" alt="Avatar" style="width:300px;height:300px;">
+            <img src="people-dancing.webp" alt="Avatar">
+          </div>
+          <div class="flip-card-back">
+            <h1>John Doe</h1> 
+            <p>Architect & Engineer</p> 
+            <p>We love that guy</p>
+            <add-button-component></add-button-component>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="people-drawing.webp" alt="Avatar">
+          </div>
+          <div class="flip-card-back">
+            <h1>John Doe</h1> 
+            <p>Architect & Engineer</p> 
+            <p>We love that guy</p>
+            <add-button-component></add-button-component>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="pinceles.webp" alt="Avatar">
+          </div>
+          <div class="flip-card-back">
+            <h1>John Doe</h1> 
+            <p>Architect & Engineer</p> 
+            <p>We love that guy</p>
+            <add-button-component></add-button-component>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="poetry.webp" alt="Avatar">
+          </div>
+          <div class="flip-card-back">
+            <h1>John Doe</h1> 
+            <p>Architect & Engineer</p> 
+            <p>We love that guy</p>
+            <add-button-component></add-button-component>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="improvisational-theatre.webp" alt="Avatar">
+          </div>
+          <div class="flip-card-back">
+            <h1>John Doe</h1> 
+            <p>Architect & Engineer</p> 
+            <p>We love that guy</p>
+            <add-button-component></add-button-component>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="img_avatar.png" alt="Avatar">
           </div>
           <div class="flip-card-back">
             <h1>John Doe</h1> 
@@ -127,75 +197,7 @@ class ProductsGallery extends HTMLElement {
         </div>
       </div>
     </div>
-    <div class="product-container">
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="people-drawing.webp" alt="Avatar" style="width:300px;height:300px;">
-        </div>
-        <div class="flip-card-back">
-          <h1>John Doe</h1> 
-          <p>Architect & Engineer</p> 
-          <p>We love that guy</p>
-          <add-button-component></add-button-component>
-        </div>
-      </div>
     </div>
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="pinceles.webp" alt="Avatar" style="width:300px;height:300px;">
-        </div>
-        <div class="flip-card-back">
-          <h1>John Doe</h1> 
-          <p>Architect & Engineer</p> 
-          <p>We love that guy</p>
-          <add-button-component></add-button-component>
-        </div>
-      </div>
-    </div>
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="poetry.webp" alt="Avatar" style="width:300px;height:300px;">
-        </div>
-        <div class="flip-card-back">
-          <h1>John Doe</h1> 
-          <p>Architect & Engineer</p> 
-          <p>We love that guy</p>
-          <add-button-component></add-button-component>
-        </div>
-      </div>
-    </div>
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="improvisational-theatre.webp" alt="Avatar" style="width:300px;height:300px;">
-        </div>
-        <div class="flip-card-back">
-          <h1>John Doe</h1> 
-          <p>Architect & Engineer</p> 
-          <p>We love that guy</p>
-          <add-button-component></add-button-component>
-        </div>
-      </div>
-    </div>
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
-        </div>
-        <div class="flip-card-back">
-          <h1>John Doe</h1> 
-          <p>Architect & Engineer</p> 
-          <p>We love that guy</p>
-          <add-button-component></add-button-component>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-
       `
   }
 }

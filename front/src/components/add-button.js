@@ -127,40 +127,9 @@ class AddButton extends HTMLElement {
           }
         }
 
-        @-moz-keyframes rotation {
-          0% {
-            -moz-transform: rotate(0);
-          }
-          100% {
-            -moz-transform: rotate(360deg);
-          }
-        }
-
-        @-webkit-keyframes rotation {
-          0% {
-            -webkit-transform: rotate(0);
-          }
-          100% {
-            -webkit-transform: rotate(360deg);
-          }
-        }
-
-        @-o-keyframes rotation {
-          0% {
-            -o-transform: rotate(0);
-          }
-          100% {
-            -o-transform: rotate(360deg);
-          }
-        }
-
-        @-ms-keyframes rotation {
-          0% {
-            -ms-transform: rotate(0);
-          }
-          100% {
-            -ms-transform: rotate(360deg);
-          }
+        @media (hover: hover) {
+        .sf-btn:hover{
+          cursor: pointer;
         }
       </style>
             
