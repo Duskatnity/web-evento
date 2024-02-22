@@ -38,7 +38,7 @@ class CategoryFilter extends HTMLElement {
 
       </style>
       <div class="button-group">
-        <div class="filter-button"><button >Para toda la familia</button></div>
+        <div class="filter-button"><button>Para toda la familia</button></div>
         <div class="filter-button"><button>Para niños</button></div>
         <div class="filter-button"><button>Para adultos</button></div>
       </div>
