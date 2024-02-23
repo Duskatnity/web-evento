@@ -64,6 +64,16 @@ class ProductsGallery extends HTMLElement {
         background-color: hsla(198, 55%, 39%, 0.1);
         transform: rotateY(180deg);
       }
+
+      .flip-card-back img {
+        object-fit: contain;
+        height: 100%;
+        width: 45%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin-left: 10px;
+      }
     </style>
     <div class="product-container">
       <div class="flip-card">
@@ -72,9 +82,7 @@ class ProductsGallery extends HTMLElement {
             <img src="son-sampol.webp" alt="son sampol">
           </div>
           <div class="flip-card-back">
-            <h1>John Doe</h1> 
-            <p>Architect & Engineer</p> 
-            <p>We love that guy</p>
+            <img src="son-sampol.webp" alt="son sampol">
             <add-button-component></add-button-component>
           </div>
         </div>
