@@ -123,10 +123,6 @@ class Cart extends HTMLElement {
           outline: none;
           box-shadow: var(--shadow-focus);
         }
-        button[disabled] {
-          opacity: var(--opacity-50);
-          pointer-events: none;
-        }
         button:active {
           background-color: var(--color-blue-300);
         }
@@ -363,9 +359,8 @@ class Cart extends HTMLElement {
     const cartbutton = this.shadow.querySelector('.cart-icon')
     const closebutton = this.shadow.querySelector('.close-button')
     const cartslider = this.shadow.querySelector('.cart')
-
-    console.log(cartbutton)
-    console.log(cartslider)
+    const plusbuttons = this.shadow.querySelectorAll('.plus')
+    const minusbuttons = this.shadow.querySelectorAll('.minus')
 
     cartbutton.addEventListener('click', () => {
       cartslider.classList.toggle('active')
@@ -374,9 +369,21 @@ class Cart extends HTMLElement {
     closebutton.addEventListener('click', () => {
       cartslider.classList.remove('active')
     })
-    // console.log(this.shadow.querySelector('.cart-icon'))
-    // querySelectorAll(.plusbutton)
-    // sumar.forEach...
+
+    plusbuttons.forEach((plusbutton) => {
+      plusbutton.addEventListener('click', () => {
+        const quantity = plusbutton.parentElement.querySelector('.quantity-selector')
+        quantity.value = (parseInt(quantity.value) + 1)
+      })
+    })
+
+    minusbuttons.forEach((minusbutton) => {
+      minusbutton.addEventListener('click', () => {
+        console.log('Funciona')
+        const quantity = minusbutton.parentElement.querySelector('.quantity-selector')
+        quantity.value = (parseInt(quantity.value) - 1)
+      })
+    })
   }
 }
 
