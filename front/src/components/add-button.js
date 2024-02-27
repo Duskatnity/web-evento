@@ -132,7 +132,7 @@ class AddButton extends HTMLElement {
           cursor: pointer;
         }
       </style>
-            
+
       <button type="submit" class="sf-btn add">
         <div class="icn-sf">
           <span class="line line-1"></span>
@@ -147,6 +147,20 @@ class AddButton extends HTMLElement {
 
     button.addEventListener('click', function () {
       button.classList.toggle('active')
+
+      if (button.classList.contains('active')) {
+        document.dispatchEvent(new CustomEvent('message', {
+          detail: {
+            text: '¡Actividad añadida a tu carrito!'
+          }
+        }))
+      } else {
+        document.dispatchEvent(new CustomEvent('message', {
+          detail: {
+            text: '¡Actividad borrada de tu carrito!'
+          }
+        }))
+      }
     })
   }
 }

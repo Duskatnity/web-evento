@@ -24,7 +24,7 @@ class Menu extends HTMLElement {
           color: white;
           text-align: center;
           padding: 1rem;
-          max-width: 5rem;
+          max-width: auto;
           font-family: 'Poppins', sans-serif;
           background-color: hsl(0, 0%, 0%, 0.7);
         }
@@ -32,7 +32,7 @@ class Menu extends HTMLElement {
         .menu-item:hover {
           cursor: pointer;
           background-color: hsl(204, 59%, 61%);
-          transition: 0.2s;
+          transition: 0.5s;
         }
 
       </style>
