@@ -13,7 +13,7 @@ class ScheduleHero extends HTMLElement {
       /* html */`
       <style>
       .hero{
-        min-height: 100vh;
+        min-height: 60vh;
         overflow: hidden;
         position: relative;
         width: 100%;
@@ -40,19 +40,11 @@ class ScheduleHero extends HTMLElement {
         margin: 2rem;
       }
 
-      .schedule {
-        font-size: 2rem;
-        font-family: 'Poppins', sans-serif;
-        text-align: center;
-        font-weight: 600;
-        margin: 2rem;
-      }
-
       .description {
         font-size: 1rem;
         font-family: 'Poppins', sans-serif;
         text-align: center;
-        margin: 2rem;
+        margin: 3rem 20rem;
       }
       </style>
 
@@ -64,15 +56,6 @@ class ScheduleHero extends HTMLElement {
             <img src="./public/son-sampol.webp" alt="son-sampol" title="finca son sampol">
           </picture>
         </div>
-      </div>
-      <div class="title">
-        TITULO
-      </div>
-      <div class="schedule">
-        29/02/2023 | 9:00 - 16:00
-      </div>
-      <div class="description">
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
       </div>
       `
   }

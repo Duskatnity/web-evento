@@ -41,7 +41,12 @@ class Schedule extends HTMLElement {
         object-fit: cover;
         width: 100%;
         filter: brightness(0.7);
-        border-radius: 1rem;
+        transition: 0.5s;
+      }
+
+      .frame-activity img:hover {
+        cursor: pointer;
+        filter: brightness(1);
       }
 
       .activity-title {
@@ -97,6 +102,21 @@ class Schedule extends HTMLElement {
         background-color: blue;
         grid-column: span 4;
         grid-row: span 2;
+        font-family: 'Poppins', sans-serif;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 4rem;
+        font-weight: 600;
+        color: white;
+        border-radius: 1rem;
+      }
+
+      .frame-end {
+        display: flex;
+        background-color: red;
+        grid-column: span 4;
+        grid-row: span 1;
         font-family: 'Poppins', sans-serif;
         justify-content: center;
         align-items: center;
@@ -168,6 +188,25 @@ class Schedule extends HTMLElement {
           <img src="./son-sampol.webp">
           <div class="activity-title">Actividad 12</div>
         </div>
+        <div class="frame-blank">15:00</div>
+        <div class="frame-activity">
+          <img src="./son-sampol.webp">
+          <div class="activity-title">Actividad 13</div>
+        </div>
+        <div class="frame-activity">
+          <img src="./son-sampol.webp">
+          <div class="activity-title">Actividad 14</div>
+        </div>
+        <div class="frame-activity">
+          <img src="./son-sampol.webp">
+          <div class="activity-title">Actividad 15</div>
+        </div>
+        <div class="frame-activity">
+          <img src="./son-sampol.webp">
+          <div class="activity-title">Actividad 16</div>
+        </div>
+        <div class="frame-blank">16:00</div>
+        <div class="frame-end">CIERRE</div>
       </div>
       `
   }

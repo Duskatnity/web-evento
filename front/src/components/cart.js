@@ -131,6 +131,9 @@ class Cart extends HTMLElement {
           position: absolute;
           right: 0;
           top: 0;
+          margin-right: 1rem;
+          font-size: 1.5rem;
+          font-weight: 600;
         }
 
         .close-button:hover {
