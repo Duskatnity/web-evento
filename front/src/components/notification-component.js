@@ -5,6 +5,8 @@ class NotificationComponent extends HTMLElement {
   }
 
   connectedCallback () {
+    this.render()
+
     document.addEventListener('message', event => {
       const notification = this.shadow.querySelector('.notification-box')
 
@@ -15,8 +17,6 @@ class NotificationComponent extends HTMLElement {
         notification.classList.remove('active')
       }, 5000)
     })
-
-    this.render()
   }
 
   render () {

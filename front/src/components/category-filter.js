@@ -38,11 +38,27 @@ class CategoryFilter extends HTMLElement {
 
       </style>
       <div class="button-group">
-        <div class="filter-button"><button>Para toda la familia</button></div>
-        <div class="filter-button"><button>Para niños</button></div>
-        <div class="filter-button"><button>Para adultos</button></div>
+        <div class="filter-button" data-category="todos"><button>Para toda la familia</button></div>
+        <div class="filter-button" data-category="jovenes"><button>Para niños</button></div>
+        <div class="filter-button" data-category="adultos"><button>Para adultos</button></div>
       </div>
       `
+
+    const filters = this.shadow.querySelectorAll('.filter-button')
+    const productsrelated = this.shadow.querySelectorAll('.flip-card')
+
+    filters.forEach(filter => {
+      filter.addEventListener('click', () => {
+        console.log(filter.dataset.category)
+
+        productsrelated.forEach(productrelated => {
+          if (productrelated.dataset.category === filter.dataset.category) {
+            console.log(productrelated.dataset.category)
+          }
+          console.log(productrelated.dataset.category)
+        })
+      })
+    })
   }
 }
 

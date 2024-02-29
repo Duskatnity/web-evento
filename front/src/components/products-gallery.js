@@ -31,6 +31,11 @@ class ProductsGallery extends HTMLElement {
       .flip-card {
         background-color: transparent;
         perspective: 1000px;
+        display: none;
+      }
+
+      .flip-card.active {
+        display: flex;
       }
 
       .flip-card-inner {
@@ -75,8 +80,9 @@ class ProductsGallery extends HTMLElement {
         margin-left: 10px;
       }
     </style>
+    <category-filter-component></category-filter-component>
     <div class="product-container">
-      <div class="flip-card">
+      <div class="flip-card" data-category="todos">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="son-sampol.webp" alt="son sampol">
@@ -87,7 +93,7 @@ class ProductsGallery extends HTMLElement {
           </div>
         </div>
       </div>
-      <div class="flip-card">
+      <div class="flip-card" data-category="todos">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="masks.webp" alt="mascaras">
@@ -100,7 +106,7 @@ class ProductsGallery extends HTMLElement {
           </div>
         </div>
       </div>
-      <div class="flip-card">
+      <div class="flip-card" data-category="todos">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="music.webp" alt="Avatar">
@@ -113,7 +119,7 @@ class ProductsGallery extends HTMLElement {
           </div>
         </div>
       </div>
-      <div class="flip-card">
+      <div class="flip-card" data-category="jovenes">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="open-books.webp" alt="Avatar">
@@ -126,7 +132,7 @@ class ProductsGallery extends HTMLElement {
           </div>
         </div>
       </div>
-      <div class="flip-card">
+      <div class="flip-card" data-category="jovenes">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="people-dancing.webp" alt="Avatar">
@@ -139,7 +145,7 @@ class ProductsGallery extends HTMLElement {
           </div>
         </div>
       </div>
-      <div class="flip-card">
+      <div class="flip-card" data-category="jovenes">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="people-drawing.webp" alt="Avatar">
@@ -152,7 +158,7 @@ class ProductsGallery extends HTMLElement {
           </div>
         </div>
       </div>
-      <div class="flip-card">
+      <div class="flip-card" data-category="adultos">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="pinceles.webp" alt="Avatar">
@@ -165,7 +171,7 @@ class ProductsGallery extends HTMLElement {
           </div>
         </div>
       </div>
-      <div class="flip-card">
+      <div class="flip-card" data-category="adultos">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="poetry.webp" alt="Avatar">
