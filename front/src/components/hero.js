@@ -2,13 +2,40 @@ class Hero extends HTMLElement {
   constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
+    this.data = []
   }
 
-  connectedCallback () {
-    this.render()
+  async connectedCallback () {
+    await this.loadData()
+    await this.render()
   }
 
-  render () {
+  async loadData () {
+    this.data = {
+      title: 'Encuentro Mosaico',
+      description: 'Un espacio para compartir, aprender y disfrutar',
+      buttonText: 'Ver horarios',
+      buttonLink: 'landing.html',
+      images: {
+        alt: 'son-sampol',
+        title: 'finca son sampol',
+        xs: {
+          src: './public/son-sampol-mobile.webp'
+        },
+        sm: {
+          src: './public/son-sampol-mobile.webp'
+        },
+        md: {
+          src: './public/son-sampol.webp'
+        },
+        lg: {
+          src: './public/son-sampol.webp'
+        }
+      }
+    }
+  }
+
+  async render () {
     this.shadow.innerHTML =
       /* html */`
         <style>
@@ -129,21 +156,23 @@ class Hero extends HTMLElement {
         <div class="hero">
           <div class="hero-image">
             <picture>
-              <source srcset="./public/son-sampol-mobile.webp" type="image/webp" media="(max-width: 600px)">
-              <source srcset="./public/son-sampol.webp" type="image/webp" media="(min-width: 601px)">
-              <img src="./public/son-sampol.webp" alt="son-sampol" title="finca son sampol">
+              <source srcset="${this.data.images.lg.src}" type="image/webp" media="(min-width: 1200px)">
+              <source srcset="${this.data.images.md.src}" type="image/webp" media="(min-width: 992px)">
+              <source srcset="${this.data.images.sm.src}" type="image/webp" media="(min-width: 601px)">
+              <source srcset="${this.data.images.xs.src}" type="image/webp" media="(max-width: 600px)">
+              <img src="${this.data.images.lg.src}" alt="${this.data.images.alt}" title="${this.data.images.title}">
             </picture>
           </div>
           <div class="hero-content">
             <div class="hero-title">
-              <h1>Encuentro Mosaico</h1>
+              <h1>${this.data.title}</h1>
             </div>
             <div class="hero-description">
-              <p>Un espacio para compartir, aprender y disfrutar</p>
+              <p>${this.data.description}</p>
             </div>
             <div class="hero-button">
-              <a href="./jornadas.html">
-                <button>Ver horarios</button>
+              <a href="${this.data.buttonLink}">
+                <button>${this.data.buttonText}</button>
               </a>
             </div>
           </div>

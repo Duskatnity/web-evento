@@ -2,17 +2,40 @@ class CategoryFilter extends HTMLElement {
   constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
+    this.data = []
   }
 
-  connectedCallback () {
-    this.render()
+  async connectedCallback () {
+    await this.loadData()
+    await this.render()
+  }
+
+  async loadData () {
+    this.data = [
+      {
+        title: 'Todos',
+        category: 'todos'
+      },
+      {
+        title: 'Para toda la familia',
+        category: 'familias'
+      },
+      {
+        title: 'Para niños',
+        category: 'jovenes'
+      },
+      {
+        title: 'Para adultos',
+        category: 'adultos'
+      }
+    ]
   }
 
   render () {
     this.shadow.innerHTML =
       /* html */`
       <style>
-        .button-group {
+        .categories {
           display: flex;
           justify-content: center;
           gap: 2rem;
@@ -37,27 +60,34 @@ class CategoryFilter extends HTMLElement {
         }
 
       </style>
-      <div class="button-group">
-        <div class="filter-button" data-category="todos"><button>Para toda la familia</button></div>
-        <div class="filter-button" data-category="jovenes"><button>Para niños</button></div>
-        <div class="filter-button" data-category="adultos"><button>Para adultos</button></div>
+      <div class="categories">
+
       </div>
       `
 
-    const filters = this.shadow.querySelectorAll('.filter-button')
-    const productsrelated = this.shadow.querySelectorAll('.flip-card')
+    const categories = this.shadow.querySelector('.categories')
 
-    filters.forEach(filter => {
-      filter.addEventListener('click', () => {
-        console.log(filter.dataset.category)
+    this.data.forEach(category => {
+      const categoryContainer = document.createElement('div')
+      categoryContainer.classList.add('filter-button')
+      categoryContainer.dataset.category = category.category
+      categories.appendChild(categoryContainer)
 
-        productsrelated.forEach(productrelated => {
-          if (productrelated.dataset.category === filter.dataset.category) {
-            console.log(productrelated.dataset.category)
+      const filterbutton = document.createElement('button')
+      filterbutton.textContent = category.title
+      categoryContainer.appendChild(filterbutton)
+    })
+
+    categories.addEventListener('click', event => {
+      if (event.target.closest('.filter-button')) {
+        const filter = event.target.closest('.filter-button')
+
+        document.dispatchEvent(new CustomEvent('filter-gallery', {
+          detail: {
+            category: filter.dataset.category
           }
-          console.log(productrelated.dataset.category)
-        })
-      })
+        }))
+      }
     })
   }
 }

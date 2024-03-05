@@ -5,7 +5,24 @@ class ProductsGallery extends HTMLElement {
   }
 
   connectedCallback () {
+    document.addEventListener('filter-gallery', this.handleFilterGallery.bind(this))
     this.render()
+  }
+
+  handleFilterGallery (event) {
+    const productsrelated = this.shadow.querySelectorAll('.flip-card')
+
+    productsrelated.forEach(productrelated => {
+      if (event.detail.category === 'todos') {
+        productrelated.classList.remove('hidden')
+      } else {
+        if (productrelated.dataset.category === event.detail.category) {
+          productrelated.classList.remove('hidden')
+        } else {
+          productrelated.classList.add('hidden')
+        }
+      }
+    })
   }
 
   render () {
@@ -31,6 +48,9 @@ class ProductsGallery extends HTMLElement {
       .flip-card {
         background-color: transparent;
         perspective: 1000px;
+      }
+
+      .flip-card.hidden{
         display: none;
       }
 
@@ -82,7 +102,7 @@ class ProductsGallery extends HTMLElement {
     </style>
     <category-filter-component></category-filter-component>
     <div class="product-container">
-      <div class="flip-card" data-category="todos">
+      <div class="flip-card" data-category="familias">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="son-sampol.webp" alt="son sampol">
@@ -93,7 +113,7 @@ class ProductsGallery extends HTMLElement {
           </div>
         </div>
       </div>
-      <div class="flip-card" data-category="todos">
+      <div class="flip-card" data-category="familias">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="masks.webp" alt="mascaras">
@@ -106,7 +126,7 @@ class ProductsGallery extends HTMLElement {
           </div>
         </div>
       </div>
-      <div class="flip-card" data-category="todos">
+      <div class="flip-card" data-category="familias">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="music.webp" alt="Avatar">
@@ -184,7 +204,7 @@ class ProductsGallery extends HTMLElement {
           </div>
         </div>
       </div>
-      <div class="flip-card">
+      <div class="flip-card" data-category="adultos">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="improvisational-theatre.webp" alt="Avatar">
@@ -197,7 +217,7 @@ class ProductsGallery extends HTMLElement {
           </div>
         </div>
       </div>
-      <div class="flip-card">
+      <div class="flip-card" data-category="adultos">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="img_avatar.png" alt="Avatar">

@@ -2,10 +2,29 @@ class Menu extends HTMLElement {
   constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
+    this.data = []
   }
 
-  connectedCallback () {
-    this.render()
+  async connectedCallback () {
+    await this.loadData()
+    await this.render()
+  }
+
+  async loadData () {
+    this.data = [
+      {
+        link: '/',
+        title: 'Inicio'
+      },
+      {
+        link: '/landing.html',
+        title: 'Horarios'
+      },
+      {
+        link: '/about.html',
+        title: 'Quienes somos'
+      }
+    ]
   }
 
   render () {
@@ -20,28 +39,41 @@ class Menu extends HTMLElement {
 
         .menu-item {
           text-decoration: none;
-          background-color: black;
           color: white;
           text-align: center;
           padding: 1rem;
           max-width: auto;
           font-family: 'Poppins', sans-serif;
-          background-color: hsl(0, 0%, 0%, 0.7);
         }
 
         .menu-item:hover {
           cursor: pointer;
-          background-color: hsl(204, 59%, 61%);
           transition: 0.5s;
         }
 
+        .menu-item a{
+          color: black;
+          font-size: 1.5rem;
+          font-weight: 600;
+          text-decoration: none;
+        }
+
       </style>
-      <div class="menu">
-        <div class="menu-item">Quienes somos</div>
-        <div class="menu-item">Preguntas frecuentes</div>
-        <div class="menu-item">Contactanos</div>
-      </div>
+      <div class="menu"></div>
       `
+
+    const menu = this.shadow.querySelector('.menu')
+
+    this.data.forEach(menuItem => {
+      const menuItemContainer = document.createElement('div')
+      menuItemContainer.classList.add('menu-item')
+      menu.appendChild(menuItemContainer)
+
+      const link = document.createElement('a')
+      link.setAttribute('href', menuItem.link)
+      link.textContent = menuItem.title
+      menuItemContainer.appendChild(link)
+    })
   }
 }
 
