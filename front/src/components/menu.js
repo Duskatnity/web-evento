@@ -17,11 +17,11 @@ class Menu extends HTMLElement {
         title: 'Inicio'
       },
       {
-        link: '/landing.html',
+        link: '/horarios.html',
         title: 'Horarios'
       },
       {
-        link: '/about.html',
+        link: '/quienes-somos.html',
         title: 'Quienes somos'
       }
     ]

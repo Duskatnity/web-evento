@@ -4,9 +4,75 @@ class ProductsGallery extends HTMLElement {
     this.shadow = this.attachShadow({ mode: 'open' })
   }
 
-  connectedCallback () {
+  async connectedCallback () {
     document.addEventListener('filter-gallery', this.handleFilterGallery.bind(this))
-    this.render()
+    await this.loadData()
+    await this.render()
+  }
+
+  async loadData () {
+    this.data = [
+      {
+        title: 'Evento de presentación',
+        description: 'Un evento de presentación sobre las actividades y otras movidas varias',
+        image: 'son-sampol.webp',
+        category: 'familias'
+      },
+      {
+        title: 'Evento 2',
+        description: 'Un evento de presentación sobre las actividades y otras movidas varias',
+        image: 'improvisational-theatre.webp',
+        category: 'familias'
+      },
+      {
+        title: 'Evento 3',
+        description: 'Un evento de presentación sobre las actividades y otras movidas varias',
+        image: 'masks.webp',
+        category: 'familias'
+      },
+      {
+        title: 'Evento 4',
+        description: 'Un evento de presentación sobre las actividades y otras movidas varias',
+        image: 'music.webp',
+        category: 'adultos'
+      },
+      {
+        title: 'Evento 5',
+        description: 'Un evento de presentación sobre las actividades y otras movidas varias',
+        image: 'open-books.webp',
+        category: 'adultos'
+      },
+      {
+        title: 'Evento 6',
+        description: 'Un evento de presentación sobre las actividades y otras movidas varias',
+        image: 'people-dancing.webp',
+        category: 'adultos'
+      },
+      {
+        title: 'Evento 7',
+        description: 'Un evento de presentación sobre las actividades y otras movidas varias',
+        image: 'people-drawing.webp',
+        category: 'jovenes'
+      },
+      {
+        title: 'Evento 8',
+        description: 'Un evento de presentación sobre las actividades y otras movidas varias',
+        image: 'pinceles.webp',
+        category: 'joevenes'
+      },
+      {
+        title: 'Evento 9',
+        description: 'Un evento de presentación sobre las actividades y otras movidas varias',
+        image: 'poetry.webp',
+        category: 'jovenes'
+      },
+      {
+        title: 'Evento 10',
+        description: 'Un evento de presentación sobre las actividades y otras movidas varias',
+        image: 'son-sampol.webp',
+        category: 'jovenes'
+      }
+    ]
   }
 
   handleFilterGallery (event) {
@@ -90,6 +156,10 @@ class ProductsGallery extends HTMLElement {
         transform: rotateY(180deg);
       }
 
+      .event-description {
+        object-fit: contain;
+      }
+
       .flip-card-back img {
         object-fit: contain;
         height: 100%;
@@ -119,9 +189,8 @@ class ProductsGallery extends HTMLElement {
             <img src="masks.webp" alt="mascaras">
           </div>
           <div class="flip-card-back">
-            <h1>John Doe</h1> 
-            <p>Architect & Engineer</p> 
-            <p>We love that guy</p>
+            <h1 class="event-title">Evento de presentación</h1> 
+            <p class="event-description">Una descripción para ver como cabe esta cosa bien dentro del cuadro</p>
             <add-button-component></add-button-component>
           </div>
         </div>
@@ -133,7 +202,7 @@ class ProductsGallery extends HTMLElement {
           </div>
           <div class="flip-card-back">
             <h1>John Doe</h1> 
-            <p>Architect & Engineer</p> 
+            <p>Una descripción para ver como cabe esta cosa bien dentro del cuadro</p> 
             <p>We love that guy</p>
             <add-button-component></add-button-component>
           </div>
@@ -233,6 +302,42 @@ class ProductsGallery extends HTMLElement {
     </div>
     </div>
       `
+
+    const products = this.shadow.querySelector('.product-container')
+
+    this.data.forEach(productItem => {
+      const productCard = document.createElement('div')
+      productCard.classList.add('flip-card')
+      productCard.dataset.category = productItem.category
+      products.appendChild(productCard)
+
+      const inner = document.createElement('div')
+      inner.classList.add('flip-card-inner')
+      productCard.appendChild(inner)
+
+      const front = document.createElement('div')
+      front.classList.add('flip-card-front')
+      inner.appendChild(front)
+
+      const image = document.createElement('img')
+      image.setAttribute('src', productItem.image)
+      front.appendChild(image)
+
+      const back = document.createElement('div')
+      back.classList.add('flip-card-back')
+      inner.appendChild(back)
+
+      const productTitle = document.createElement('h1')
+      productTitle.textContent = productItem.title
+      back.appendChild(productTitle)
+
+      const description = document.createElement('p')
+      description.textContent = productItem.description
+      back.appendChild(description)
+
+      const addButton = document.createElement('add-button-component')
+      back.appendChild(addButton)
+    })
   }
 }
 

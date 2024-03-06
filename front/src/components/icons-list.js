@@ -44,6 +44,10 @@ class IconsList extends HTMLElement {
             text-align: center;
           }
         }
+
+        .icons-list svg:root{
+          --mi-viewbox: 0 0 24 24;
+        }
       </style>
     <ul class="icons-list">
       <li>

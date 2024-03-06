@@ -2,10 +2,44 @@ class Schedule extends HTMLElement {
   constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
+    this.data = []
   }
 
-  connectedCallback () {
-    this.render()
+  async connectedCallback () {
+    await this.loadData()
+    await this.render()
+  }
+
+  async loadData () {
+    this.data = {
+      stages: [
+
+      ],
+      scheudle: [
+        {
+          time: '10:00',
+          activities: [
+            {
+              title: 'Actividad 1',
+              images: [
+
+              ]
+            }
+          ]
+        },
+        {
+          time: '11:00',
+          activities: [
+            {
+              title: 'Actividad 1',
+              images: [
+                
+              ]
+            }
+          ]
+        }
+      ] 
+    }
   }
 
   render () {

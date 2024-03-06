@@ -2,10 +2,37 @@ class Introduction extends HTMLElement {
   constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
+    this.data = []
   }
 
-  connectedCallback () {
-    this.render()
+  async connectedCallback () {
+    await this.loadData()
+    await this.render()
+  }
+
+  async loadData () {
+    this.data = {
+      title: '¿Quienes somos?',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      buttonText: 'Ver horarios',
+      buttonLink: 'landing.html',
+      images: {
+        alt: 'son-sampol',
+        title: 'finca son sampol',
+        xs: {
+          src: './public/son-sampol-mobile.webp'
+        },
+        sm: {
+          src: './public/son-sampol-mobile.webp'
+        },
+        md: {
+          src: './public/son-sampol.webp'
+        },
+        lg: {
+          src: './public/son-sampol.webp'
+        }
+      }
+    }
   }
 
   render () {
@@ -71,17 +98,17 @@ class Introduction extends HTMLElement {
     <div class="intro">
       <div class="intro-image">
         <picture>
-          <source srcset="./public/son-sampol-mobile.webp" type="image/webp" media="(max-width: 600px)">
-          <source srcset="./public/son-sampol.webp" type="image/webp" media="(min-width: 601px)">
+          <source srcset=${this.data.images.xs.src} type="image/webp" media="(max-width: 600px)">
+          <source srcset=${this.data.images.lg.src} type="image/webp" media="(min-width: 601px)">
           <img src="./public/son-sampol.webp" alt="son-sampol" title="finca son sampol">
         </picture>
       </div>
       <div class="intro-content">
         <div class="intro-title">
-          <h1>¿Quienes somos?</h1>
+          <h1>${this.data.title}</h1>
         </div>
         <div class="intro-description">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>${this.data.description}</p>
         </div>
       </div>
     </div>
