@@ -15,14 +15,29 @@ class Schedule extends HTMLElement {
       stages: [
 
       ],
-      scheudle: [
+      schedule: [
         {
           time: '10:00',
           activities: [
             {
               title: 'Actividad 1',
               images: [
-
+                {
+                  image: 'son-sampol.webp',
+                  alt: 'son-sampol'
+                },
+                {
+                  image: 'improvisational-theatre.webp',
+                  alt: 'theatre'
+                },
+                {
+                  image: 'masks.webp',
+                  alt: 'masks'
+                },
+                {
+                  image: 'music.webp',
+                  alt: 'music'
+                }
               ]
             }
           ]
@@ -31,14 +46,40 @@ class Schedule extends HTMLElement {
           time: '11:00',
           activities: [
             {
-              title: 'Actividad 1',
+              title: 'Actividad 2',
               images: [
-                
+                {
+                  image: 'open-books.webp',
+                  alt: 'books'
+                },
+                {
+                  image: 'people-dancing.webp',
+                  alt: 'dancers'
+                },
+                {
+                  image: 'people-drawing.webp',
+                  alt: 'drawers'
+                },
+                {
+                  image: 'pinceles.webp',
+                  alt: 'brushes'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          time: '12:00',
+          activities: [
+            {
+              title: 'Actividad 3',
+              images: [
+
               ]
             }
           ]
         }
-      ] 
+      ]
     }
   }
 
@@ -168,22 +209,24 @@ class Schedule extends HTMLElement {
         <div class="frame-blank">Escenario 2</div>
         <div class="frame-blank">Escenario 3</div>
         <div class="frame-blank">Escenario 4</div>
-        <div class="frame-blank">10:00</div>
-        <div class="frame-activity">
-          <img src="./son-sampol.webp">
-          <div class="activity-title">Actividad 1</div>
-        </div>
-        <div class="frame-activity">
-          <img src="./pinceles.webp">
-          <div class="activity-title">Actividad 2</div>
-        </div>
-        <div class="frame-activity">
-          <img src="./masks.webp">
-          <div class="activity-title">Actividad 3</div>
-        </div>
-        <div class="frame-activity">
-          <img src="./music.webp">
-          <div class="activity-title">Actividad 4</div>
+        <div class="schedule-row">
+          <div class="frame-blank">10:00</div>
+          <div class="frame-activity">
+            <img src="./son-sampol.webp">
+            <div class="activity-title">Actividad 1</div>
+          </div>
+          <div class="frame-activity">
+            <img src="./pinceles.webp">
+            <div class="activity-title">Actividad 2</div>
+          </div>
+          <div class="frame-activity">
+            <img src="./masks.webp">
+            <div class="activity-title">Actividad 3</div>
+          </div>
+          <div class="frame-activity">
+            <img src="./music.webp">
+            <div class="activity-title">Actividad 4</div>
+          </div>
         </div>
         <div class="frame-blank">11:00</div>
         <div class="frame-activity">
@@ -243,6 +286,12 @@ class Schedule extends HTMLElement {
         <div class="frame-end">CIERRE</div>
       </div>
       `
+
+    const rows = this.shadow.querySelector('.schedule-row')
+
+    this.data.forEach(row => {
+
+    })
   }
 }
 
