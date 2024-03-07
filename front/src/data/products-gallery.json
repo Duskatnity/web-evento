@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Evento de presentación",
+    "description": "Un evento de presentación sobre las actividades y otras movidas varias",
+    "image": "son-sampol.webp",
+    "category": "familias"
+  },
+  {
+    "title": "Evento 2",
+    "description": "Un evento de presentación sobre las actividades y otras movidas varias",
+    "image": "improvisational-theatre.webp",
+    "category": "familias"
+  },
+  {
+    "title": "Evento 3",
+    "description": "Un evento de presentación sobre las actividades y otras movidas varias",
+    "image": "masks.webp",
+    "category": "familias"
+  },
+  {
+    "title": "Evento 4",
+    "description": "Un evento de presentación sobre las actividades y otras movidas varias",
+    "image": "music.webp",
+    "category": "adultos"
+  },
+  {
+    "title": "Evento 5",
+    "description": "Un evento de presentación sobre las actividades y otras movidas varias",
+    "image": "open-books.webp",
+    "category": "adultos"
+  },
+  {
+    "title": "Evento 6",
+    "description": "Un evento de presentación sobre las actividades y otras movidas varias",
+    "image": "people-dancing.webp",
+    "category": "adultos"
+  },
+  {
+    "title": "Evento 7",
+    "description": "Un evento de presentación sobre las actividades y otras movidas varias",
+    "image": "people-drawing.webp",
+    "category": "jovenes"
+  },
+  {
+    "title": "Evento 8",
+    "description": "Un evento de presentación sobre las actividades y otras movidas varias",
+    "image": "pinceles.webp",
+    "category": "joevenes"
+  },
+  {
+    "title": "Evento 9",
+    "description": "Un evento de presentación sobre las actividades y otras movidas varias",
+    "image": "poetry.webp",
+    "category": "jovenes"
+  },
+  {
+    "title": "Evento 10",
+    "description": "Un evento de presentación sobre las actividades y otras movidas varias",
+    "image": "son-sampol.webp",
+    "category": "jovenes"
+  }
+]

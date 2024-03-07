@@ -11,27 +11,16 @@ class CategoryFilter extends HTMLElement {
   }
 
   async loadData () {
-    this.data = [
-      {
-        title: 'Todos',
-        category: 'todos'
-      },
-      {
-        title: 'Para toda la familia',
-        category: 'familias'
-      },
-      {
-        title: 'Para niños',
-        category: 'jovenes'
-      },
-      {
-        title: 'Para adultos',
-        category: 'adultos'
-      }
-    ]
+    const response = await fetch('/src/data/category-filter.json')
+    this.data = await response.json()
   }
 
-  render () {
+  handleShowNotification (event) {
+    const products = event.detail.category === 'todos' ? this.data : this.data.filter(product => product.category === event.detail.category)
+    this.render(products)
+  }
+
+  render (products = this.data) {
     this.shadow.innerHTML =
       /* html */`
       <style>

@@ -11,12 +11,8 @@ class ProductCard extends HTMLElement {
   }
 
   async loadData () {
-    this.data = {
-      title: 'Titulo',
-      description: 'Descripcion del evento en cuestión',
-      image: 'son-sampol.webp',
-      schedule: '10:00-12:00'
-    }
+    const response = await fetch('/src/data/product-card.json')
+    this.data = await response.json()
   }
 
   render () {

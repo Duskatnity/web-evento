@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Todos",
+    "category": "todos"
+  },
+  {
+    "title": "Para toda la familia",
+    "category": "familias"
+  },
+  {
+    "title": "Para niños",
+    "category": "jovenes"
+  },
+  {
+    "title": "Para adultos",
+    "category": "adultos"
+  }
+]

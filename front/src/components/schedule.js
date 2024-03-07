@@ -39,6 +39,33 @@ class Schedule extends HTMLElement {
                   alt: 'music'
                 }
               ]
+            },
+            {
+              title: 'Actividad 2',
+              images: [
+                {
+                  image: 'improvisational-theatre.webp',
+                  alt: 'theatre'
+                }
+              ]
+            },
+            {
+              title: 'Actividad 3',
+              images: [
+                {
+                  image: 'improvisational-theatre.webp',
+                  alt: 'theatre'
+                }
+              ]
+            },
+            {
+              title: 'Actividad 4',
+              images: [
+                {
+                  image: 'improvisational-theatre.webp',
+                  alt: 'theatre'
+                }
+              ]
             }
           ]
         },
@@ -46,23 +73,38 @@ class Schedule extends HTMLElement {
           time: '11:00',
           activities: [
             {
-              title: 'Actividad 2',
+              title: 'Actividad 5',
               images: [
                 {
                   image: 'open-books.webp',
                   alt: 'books'
-                },
+                }
+              ]
+            },
+            {
+              title: 'Actividad 6',
+              images: [
                 {
-                  image: 'people-dancing.webp',
-                  alt: 'dancers'
-                },
+                  image: 'improvisational-theatre.webp',
+                  alt: 'theatre'
+                }
+              ]
+            },
+            {
+              title: 'Actividad 7',
+              images: [
                 {
-                  image: 'people-drawing.webp',
-                  alt: 'drawers'
-                },
+                  image: 'improvisational-theatre.webp',
+                  alt: 'theatre'
+                }
+              ]
+            },
+            {
+              title: 'Actividad 8',
+              images: [
                 {
-                  image: 'pinceles.webp',
-                  alt: 'brushes'
+                  image: 'improvisational-theatre.webp',
+                  alt: 'theatre'
                 }
               ]
             }
@@ -228,22 +270,24 @@ class Schedule extends HTMLElement {
             <div class="activity-title">Actividad 4</div>
           </div>
         </div>
-        <div class="frame-blank">11:00</div>
-        <div class="frame-activity">
-          <img src="./people-dancing.webp">
-          <div class="activity-title">Actividad 5</div>
-        </div>
-        <div class="frame-activity">
-          <img src="./people-drawing.webp">
-          <div class="activity-title">Actividad 6</div>
-        </div>
-        <div class="frame-activity">
-          <img src="./poetry.webp">
-          <div class="activity-title">Actividad 7</div>
-        </div>
-        <div class="frame-activity">
-          <img src="./improvisational-theatre.webp">
-          <div class="activity-title">Actividad 8</div>
+        <div class="schedule-row">
+          <div class="frame-blank">11:00</div>
+          <div class="frame-activity">
+            <img src="./people-dancing.webp">
+            <div class="activity-title">Actividad 5</div>
+          </div>
+          <div class="frame-activity">
+            <img src="./people-drawing.webp">
+            <div class="activity-title">Actividad 6</div>
+          </div>
+          <div class="frame-activity">
+            <img src="./poetry.webp">
+            <div class="activity-title">Actividad 7</div>
+          </div>
+          <div class="frame-activity">
+            <img src="./improvisational-theatre.webp">
+            <div class="activity-title">Actividad 8</div>
+          </div>
         </div>
         <div class="frame-blank">12:00</div>
         <div class="frame-break">BREAKTIME</div>
@@ -290,7 +334,10 @@ class Schedule extends HTMLElement {
     const rows = this.shadow.querySelector('.schedule-row')
 
     this.data.forEach(row => {
-
+      const scheduleSquare = document.createElement('div')
+      scheduleSquare.classList.add('frame-blank')
+      scheduleSquare.textContent = row.schedule.time
+      rows.appendChild(scheduleSquare)
     })
   }
 }
