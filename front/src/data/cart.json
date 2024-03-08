@@ -1,0 +1,16 @@
+{
+  "products": [
+    {
+    "name": "Taller de marionetas",
+    "id": "1",
+    "quantity": "0",
+    "image": "bags.webp"
+    },
+    {
+      "name": "Taller de pintura para niños",
+      "id": "2",
+      "quantity": "0",
+      "image": "bags.webp"
+    }
+  ]
+}

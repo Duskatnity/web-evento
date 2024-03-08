@@ -56,10 +56,25 @@ class MinusPlusButtons extends HTMLElement {
           </svg>
         </button>
       </div>
-
-
-
       `
+
+    const plusbuttons = this.shadow.querySelectorAll('.plus')
+    const minusbuttons = this.shadow.querySelectorAll('.minus')
+
+    plusbuttons.forEach((plusbutton) => {
+      plusbutton.addEventListener('click', () => {
+        const quantity = plusbutton.parentElement.querySelector('.quantity-selector')
+        quantity.value = (parseInt(quantity.value) + 1)
+      })
+    })
+
+    minusbuttons.forEach((minusbutton) => {
+      minusbutton.addEventListener('click', () => {
+        console.log('Funciona')
+        const quantity = minusbutton.parentElement.querySelector('.quantity-selector')
+        quantity.value = (parseInt(quantity.value) - 1)
+      })
+    })
   }
 }
 
