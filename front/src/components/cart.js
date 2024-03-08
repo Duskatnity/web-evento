@@ -183,24 +183,6 @@ class Cart extends HTMLElement {
           <div class="header-description">Dinos cuantas personas quieres apuntar para cada actividad</div>
         </div class="cart-header">
         <div class="product-section fixed-component-content">
-          <div class="product">
-            <img src="bags.webp" alt="Avatar">
-            <div class="product-description">Taller de marionetas
-              <minus-plus-component></minus-plus-component>
-            </div>
-            <div class="remove-button">
-              <button>X</button>
-            </div>
-          </div>
-          <div class="product">
-            <img src="bags.webp" alt="Avatar">
-            <div class="product-description">Taller de pintura para niños
-              <minus-plus-component></minus-plus-component>
-            </div>
-            <div class="remove-button">
-              <button>X</button>
-            </div>
-          </div>
         </div>
         <div class="form-section fixed-component-content">
           <form class="form-section">
@@ -233,13 +215,16 @@ class Cart extends HTMLElement {
       cartproducts.appendChild(cartItem)
 
       const productImage = document.createElement('img')
-      productImage.setAttribute('src', productItem.products.image)
+      productImage.setAttribute('src', productItem.image)
       cartItem.appendChild(productImage)
 
       const productName = document.createElement('div')
       productName.classList.add('product-description')
-      productName.textContent = productItem.products.name
+      productName.textContent = productItem.name
       cartItem.appendChild(productName)
+
+      const minusplusButtons = document.createElement('minus-plus-component')
+      productName.appendChild(minusplusButtons)
 
       const removeButton = document.createElement('div')
       removeButton.classList.add('remove-button')
@@ -263,13 +248,13 @@ class Cart extends HTMLElement {
 
     console.log(formDataJson)
 
-    //const response = await fetch('http://localhost:3000/api/form', {
+    // const response = await fetch('http://localhost:3000/api/form', {
     //  method: 'POST',
     //  headers: {
     //    'Content-Type': 'application/json'
     //  },
     //  body: JSON.stringify(formDataJson)
-    //})
+    // })
   }
 }
 
