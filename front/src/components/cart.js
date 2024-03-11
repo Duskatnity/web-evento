@@ -184,15 +184,7 @@ class Cart extends HTMLElement {
         </div class="cart-header">
         <div class="product-section fixed-component-content">
         </div>
-        <div class="form-section fixed-component-content">
-          <form class="form-section">
-            <label class="form-text-style" id="name">Nombre</label><input type="text" name="name">
-            <label class="form-text-style" id="surname" >Apellidos</label><input type="text" name="surname">
-            <label class="form-text-style" id="email" >Email</label><input type="text" name="email">
-            <label><input type="checkbox" name="newsletter" value="true">Quiero recibir información sobre futuros eventos</label>
-            <div class="reserve-button"><button>Reserva tu plaza</button></div>
-          </form>
-        </div>
+        <checkout-component></checkout-component>
       </div>
       `
     const cartbutton = this.shadow.querySelector('.cart-icon')
@@ -233,11 +225,6 @@ class Cart extends HTMLElement {
       const removeIcon = document.createElement('button')
       removeIcon.textContent = 'X'
       removeButton.appendChild(removeIcon)
-    })
-
-    reservebutton.addEventListener('click', event => {
-      event.preventDefault()
-      this.sendForm()
     })
   }
 
