@@ -4,11 +4,11 @@
   "title": "Inicio"
   },
   {
-    "link": "/horarios.html",
+    "link": "/horarios",
     "title": "Horarios"
   },
   {
-    "link": "/quienes-somos.html",
+    "link": "/quienes-somos",
     "title": "Quienes somos"
   }
 ]

@@ -156,9 +156,9 @@ class CheckoutComponent extends HTMLElement {
             labelContainer.appendChild(errorMessage)
           }
           validForm = false
-        } else if (labelContainer.errorMessage === true) {
-          console.log('text')
-          labelContainer.removeChild(errorMessage)
+        } else {
+          element.classList.remove('error-message')
+          element.closest('.form-item').querySelector('.error-message')?.remove()
         }
       }
     }

@@ -182,9 +182,7 @@ class Cart extends HTMLElement {
           <div class="header-title">Tu horario para el evento</div>
           <div class="header-description">Dinos cuantas personas quieres apuntar para cada actividad</div>
         </div class="cart-header">
-        <div class="product-section fixed-component-content">
-        </div>
-        <checkout-component></checkout-component>
+        <div class="product-section fixed-component-content"></div>
       </div>
       `
     const cartbutton = this.shadow.querySelector('.cart-icon')
@@ -192,6 +190,7 @@ class Cart extends HTMLElement {
     const cartslider = this.shadow.querySelector('.cart')
     const reservebutton = this.shadow.querySelector('.reserve-button')
     const cartproducts = this.shadow.querySelector('.product-section')
+    const checkoutComponent = this.shadow.querySelector('checkout-component')
 
     cartbutton.addEventListener('click', () => {
       cartslider.classList.toggle('active')
@@ -200,6 +199,17 @@ class Cart extends HTMLElement {
     closebutton.addEventListener('click', () => {
       cartslider.classList.remove('active')
     })
+
+    if (this.data.length > 0) {
+      const checkoutForm = document.createElement('checkout-component')
+      cartslider.appendChild(checkoutForm)
+    }
+
+    if (this.data.length === 0) {
+      const notificationLength = document.createElement('p')
+      notificationLength.textContent = 'No hay productos añadidos al carrito'
+      cartproducts.appendChild(notificationLength)
+    }
 
     this.data.forEach(productItem => {
       const cartItem = document.createElement('div')
