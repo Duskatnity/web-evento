@@ -10,10 +10,9 @@ class Cart extends HTMLElement {
   }
 
   async connectedCallback () {
+    this.productId = this.getAttribute('product-id')
     this.unsubscribe = store.subscribe(() => {
       const currentState = store.getState()
-
-      console.log(currentState.cart.cartProducts)
 
       if (currentState.cart.cartProducts.length > this.data.length) {
         currentState.cart.cartProducts.forEach(async product => {
@@ -222,9 +221,7 @@ class Cart extends HTMLElement {
     const cartbutton = this.shadow.querySelector('.cart-icon')
     const closebutton = this.shadow.querySelector('.close-button')
     const cartslider = this.shadow.querySelector('.cart')
-    const reservebutton = this.shadow.querySelector('.reserve-button')
     const cartproducts = this.shadow.querySelector('.product-section')
-    const checkoutComponent = this.shadow.querySelector('checkout-component')
 
     cartbutton.addEventListener('click', () => {
       cartslider.classList.toggle('active')
@@ -248,7 +245,9 @@ class Cart extends HTMLElement {
 
     cartslider.addEventListener('click', event => {
       if (event.target.closest('.remove-button')) {
-
+        const id = this.target.closest('product-id')
+        console.log(id)
+        this.removeProduct(id)
       }
     })
 
@@ -301,6 +300,14 @@ class Cart extends HTMLElement {
     const response = await fetch(`/src/data/products/${id}.json`)
     const product = await response.json()
     this.data.push(product)
+
+    this.render()
+  }
+
+  async removeProduct (id) {
+    const response = await fetch(`/src/data/products/${id}.json`)
+    const product = await response.json()
+    this.data.pop(product)
 
     this.render()
   }
