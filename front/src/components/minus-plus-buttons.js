@@ -1,3 +1,6 @@
+import { store } from '../redux/store.js'
+import { addProduct } from '../redux/cart-slice.js'
+
 class MinusPlusButtons extends HTMLElement {
   constructor () {
     super()
@@ -5,6 +8,7 @@ class MinusPlusButtons extends HTMLElement {
   }
 
   connectedCallback () {
+    this.productId = this.getAttribute('product-id')
     this.render()
   }
 
@@ -12,7 +16,7 @@ class MinusPlusButtons extends HTMLElement {
     this.shadow.innerHTML =
       /* html */`
       <style>
-        .input {
+        .plus-minus-button {
           margin-top: 1rem;
           margin-bottom: 1rem;
           display: flex;
@@ -42,7 +46,7 @@ class MinusPlusButtons extends HTMLElement {
         }
       </style>
 
-      <div class="input">
+      <div class="plus-minus-button">
         <button class="minus" aria-label="Decrease by one" disabled>
           <svg width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line y1="1" x2="16" y2="1" stroke="#0064FE" stroke-width="2" class="icon" />
@@ -58,22 +62,28 @@ class MinusPlusButtons extends HTMLElement {
       </div>
       `
 
-    const plusbuttons = this.shadow.querySelectorAll('.plus')
-    const minusbuttons = this.shadow.querySelectorAll('.minus')
+    const plusMinusButton = this.shadow.querySelector('.plus-minus-button')
 
-    plusbuttons.forEach((plusbutton) => {
-      plusbutton.addEventListener('click', () => {
-        const quantity = plusbutton.parentElement.querySelector('.quantity-selector')
+    plusMinusButton.addEventListener('click', event => {
+      if (event.target.closest('.plus')) {
+        const quantity = this.shadow.querySelector('.quantity-selector')
         quantity.value = (parseInt(quantity.value) + 1)
-      })
-    })
 
-    minusbuttons.forEach((minusbutton) => {
-      minusbutton.addEventListener('click', () => {
-        console.log('Funciona')
-        const quantity = minusbutton.parentElement.querySelector('.quantity-selector')
+        store.dispatch(addProduct({
+          id: this.productId,
+          quantity: parseInt(quantity.value)
+        }))
+      }
+
+      if (event.target.closest('.minus')) {
+        const quantity = this.shadow.querySelector('.quantity-selector')
         quantity.value = (parseInt(quantity.value) - 1)
-      })
+
+        store.dispatch(addProduct({
+          id: this.productId,
+          quantity: parseInt(quantity.value)
+        }))
+      }
     })
   }
 }

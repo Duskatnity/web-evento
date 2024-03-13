@@ -1,10 +1,30 @@
+import { store } from '../redux/store.js'
+import { addProduct, removeProduct } from '../redux/cart-slice.js'
+
 class Cart extends HTMLElement {
   constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
+    this.data = []
+    this.unsubscribe = null
   }
 
   async connectedCallback () {
+    this.unsubscribe = store.subscribe(() => {
+      const currentState = store.getState()
+
+      console.log(currentState.cart.cartProducts)
+
+      if (currentState.cart.cartProducts.length > this.data.length) {
+        currentState.cart.cartProducts.forEach(async product => {
+          const cartProduct = this.data.some(cartProduct => cartProduct.id === product.id)
+
+          if (!cartProduct) {
+            await this.addProduct(product.id)
+          }
+        })
+      }
+    })
     await this.loadData()
     await this.render()
   }
@@ -49,6 +69,7 @@ class Cart extends HTMLElement {
           background: hsla(252, 80%, 50%, 1);
           color: white;
           font-size: 1.25rem;
+          font-family: 'Poppins', sans-serif;
           width: auto;
           padding-left: 0.5rem;
           padding-bottom: 0.5rem;
@@ -56,6 +77,7 @@ class Cart extends HTMLElement {
 
         .header-title {
           font-size: 1.5rem;
+          font-weight: 600;
         }
 
         .header-description {
@@ -80,6 +102,18 @@ class Cart extends HTMLElement {
 
         .product-section::-webkit-scrollbar-thumb{
           background-color: hsla(252, 53%, 50%, 1);
+        }
+
+        .notification {
+          display: flex;
+          font-size: 3rem;
+          text-align: center;
+          font-family: 'Poppins', sans-serif;
+        }
+
+        .notification p {
+          display: flex;
+          text-align: center;
         }
 
         .product {
@@ -177,7 +211,7 @@ class Cart extends HTMLElement {
       <div class="cart">
         <div class="cart-header">
           <div class="close-button">
-          X
+          <svg height="25px" width="25px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" xml:space="preserve" fill="#4219e6" stroke="#4219e6"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path style="fill:#ffffff;" d="M21.125,0H4.875C2.182,0,0,2.182,0,4.875v16.25C0,23.818,2.182,26,4.875,26h16.25 C23.818,26,26,23.818,26,21.125V4.875C26,2.182,23.818,0,21.125,0z M18.78,17.394l-1.388,1.387c-0.254,0.255-0.67,0.255-0.924,0 L13,15.313L9.533,18.78c-0.255,0.255-0.67,0.255-0.925-0.002L7.22,17.394c-0.253-0.256-0.253-0.669,0-0.926l3.468-3.467 L7.221,9.534c-0.254-0.256-0.254-0.672,0-0.925l1.388-1.388c0.255-0.257,0.671-0.257,0.925,0L13,10.689l3.468-3.468 c0.255-0.257,0.671-0.257,0.924,0l1.388,1.386c0.254,0.255,0.254,0.671,0.001,0.927l-3.468,3.467l3.468,3.467 C19.033,16.725,19.033,17.138,18.78,17.394z"></path> </g> </g></svg>
           </div>
           <div class="header-title">Tu horario para el evento</div>
           <div class="header-description">Dinos cuantas personas quieres apuntar para cada actividad</div>
@@ -207,9 +241,16 @@ class Cart extends HTMLElement {
 
     if (this.data.length === 0) {
       const notificationLength = document.createElement('p')
+      notificationLength.classList.add('notification')
       notificationLength.textContent = 'No hay productos añadidos al carrito'
       cartproducts.appendChild(notificationLength)
     }
+
+    cartslider.addEventListener('click', event => {
+      if (event.target.closest('.remove-button')) {
+
+      }
+    })
 
     this.data.forEach(productItem => {
       const cartItem = document.createElement('div')
@@ -226,6 +267,8 @@ class Cart extends HTMLElement {
       cartItem.appendChild(productName)
 
       const minusplusButtons = document.createElement('minus-plus-component')
+      minusplusButtons.setAttribute('product-id', productItem.id)
+      minusplusButtons.setAttribute('quantity', productItem.quantity)
       productName.appendChild(minusplusButtons)
 
       const removeButton = document.createElement('div')
@@ -252,6 +295,14 @@ class Cart extends HTMLElement {
     //  },
     //  body: JSON.stringify(formDataJson)
     // })
+  }
+
+  async addProduct (id) {
+    const response = await fetch(`/src/data/products/${id}.json`)
+    const product = await response.json()
+    this.data.push(product)
+
+    this.render()
   }
 }
 

@@ -148,6 +148,7 @@ class ProductsGallery extends HTMLElement {
       back.appendChild(description)
 
       const addButton = document.createElement('add-button-component')
+      addButton.setAttribute('product-id', productItem.id)
       back.appendChild(addButton)
     })
   }
