@@ -5,12 +5,21 @@ class AddButton extends HTMLElement {
   constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
-    this.data = []
     this.unsubscribe = null
   }
 
   async connectedCallback () {
     this.productId = this.getAttribute('product-id')
+
+    this.unsubscribe = store.subscribe(() => {
+      const currentState = store.getState()
+
+      const cartProduct = currentState.cart.cartProducts.some(cartProduct => cartProduct.id === this.productId)
+
+      if (!cartProduct) {
+        this.shadow.querySelector('button').classList.remove('active')
+      }
+    })
 
     this.render()
   }
@@ -179,9 +188,15 @@ class AddButton extends HTMLElement {
   }
 
   removeElement () {
+    const product = {
+      id: this.productId
+    }
+
+    store.dispatch(removeProduct(product))
+
     document.dispatchEvent(new CustomEvent('message', {
       detail: {
-        text: 'Se ha removido la actividad al carrito'
+        text: 'Se ha removido la actividad del carrito'
       }
     }))
   }

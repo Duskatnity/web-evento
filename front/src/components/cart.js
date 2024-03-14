@@ -23,6 +23,17 @@ class Cart extends HTMLElement {
           }
         })
       }
+
+      if (currentState.cart.cartProducts.length < this.data.length) {
+        this.data.forEach(async product => {
+          const cartProduct = currentState.cart.cartProducts.some(cartProduct => cartProduct.id === product.id)
+
+          if (!cartProduct) {
+            this.data = this.data.filter(cartProduct => cartProduct.id !== product.id)
+            this.render()
+          }
+        })
+      }
     })
     await this.loadData()
     await this.render()
@@ -245,9 +256,9 @@ class Cart extends HTMLElement {
 
     cartslider.addEventListener('click', event => {
       if (event.target.closest('.remove-button')) {
-        const id = this.target.closest('product-id')
-        console.log(id)
-        this.removeProduct(id)
+        const removeButton = event.target.closest('.remove-button')
+        const productId = removeButton.dataset.id
+        this.removeProduct(productId)
       }
     })
 
@@ -272,6 +283,7 @@ class Cart extends HTMLElement {
 
       const removeButton = document.createElement('div')
       removeButton.classList.add('remove-button')
+      removeButton.dataset.id = productItem.id
       cartItem.appendChild(removeButton)
 
       const removeIcon = document.createElement('button')
@@ -305,10 +317,9 @@ class Cart extends HTMLElement {
   }
 
   async removeProduct (id) {
-    const response = await fetch(`/src/data/products/${id}.json`)
-    const product = await response.json()
-    this.data.pop(product)
+    this.data = this.data.filter(product => product.id !== id)
 
+    store.dispatch(removeProduct({ id }))
     this.render()
   }
 }
